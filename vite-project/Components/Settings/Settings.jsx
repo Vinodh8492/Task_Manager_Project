@@ -15,14 +15,16 @@ import { useNavigate } from 'react-router-dom'
 import { updateUserDetails, getUserDetails } from '../../API/User'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 function LogoutOverlay({ onClose, onConfirm }) {
   return (
-    <div className={styles.logoutoverlay}>
-      <div className={styles.logoutoverlayContent}>
-        <p className={styles.confirmlogoutpara} >Are you sure you want to log out?</p>
-        <button className={styles.confirmlogoutButton} onClick={onConfirm}>Yes, Logout</button>
-        <button className={styles.confirmcloseButton} onClick={onClose}>Cancel</button>
+    <div className={`${styles.logoutoverlay}`}>
+      <div className={`${styles.logoutoverlayContent}  w-50 d-flex flex-column text-center align-items-center justify-content-center `}>
+        <p className={`${styles.confirmlogoutpara} text-center`} >Are you sure you want to log out?</p>
+        <button className={`${styles.confirmlogoutButton} text-nowrap`} onClick={onConfirm}>Yes</button>
+        <button className={`${styles.confirmcloseButton}`} onClick={onClose}>Cancel</button>
       </div>
     </div>
   );
@@ -164,90 +166,90 @@ function Settings() {
 
 
   return (
-    <div className={styles.body} >
+    <div className={`${styles.body} container-fluid`} >
       <ToastContainer />
-      <div className={styles.left} >
+      <div className={`${styles.left} col-lg-2.5 col-md-2 col-sm-3 col-xs-3`} >
 
-        <div className={styles.flex} >
-          <img src={ProLogo} className={styles.prologo} />
-          <p className={styles.pro} >Pro Manage</p>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `} >
+          <img src={ProLogo} className={`${styles.prologo} img img-fluid`} />
+          <p className={`${styles.pro} fs-3 text-center`} >Pro Manage</p>
         </div>
 
-        <div className={styles.flex} onClick={() => { navigate('/') }} >
-          <img src={Board} className={styles.board} />
-          <p className={styles.boardtext} >Board</p>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `} onClick={() => { navigate('/') }} >
+          <img src={Board} className={`${styles.board} img img-fluid`} />
+          <p className={`${styles.boardtext}`} >Board</p>
         </div>
 
-        <div className={styles.flex} onClick={() => { navigate('/analytics') }} >
-          <img src={Analytics} className={styles.analytics} />
-          <p className={styles.analyticstext} >Analytics</p>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `} onClick={() => { navigate('/analytics') }} >
+          <img src={Analytics} className={`${styles.analytics} img img-fluid`} />
+          <p className={`${styles.analyticstext}`} >Analytics</p>
         </div>
 
-        <div className={styles.flexboard}  >
-          <img src={Setting} className={styles.settings} />
-          <p className={styles.settingstext} >Settings</p>
+        <div className={`${styles.flexboard} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `}  >
+          <img src={Setting} className={`${styles.settings} img img-fluid`} />
+          <p className={`${styles.settingstext} fs-6`} >Settings</p>
         </div>
 
-        <div className={styles.flexy} onClick={() => setShowOverlay(true)} >
-          <img src={Logout} className={styles.logout} />
-          <p className={styles.log} >Log out </p>
+        <div className={`${styles.flexy}`} onClick={() => setShowOverlay(true)} >
+          <img src={Logout} className={`${styles.logout}`} />
+          <p className={`${styles.log}`} >Log out </p>
         </div>
 
       </div>
-      <hr className={styles.separator} />
+      <div className={`${styles.separator} bg-info col-lg-3 `} ></div>
 
-      <div className={styles.right} >
+      <div className={`${styles.right} ms-3`} >
 
-        <div className={styles.header}>
-          <p className={styles.settings}>Settings</p>
+        <div className={`${styles.header}`}>
+          <p className={`${styles.settings} fs-3`}>Settings</p>
         </div>
 
-        <div className={styles.data} >
-          <div className={styles.container}>
-            <img src={Person} className={styles.person} />
-            <input type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className={styles.input} />
+        <div className={`${styles.data} `} >
+          <div className={`${styles.containers}  `}>
+            <img src={Person} className={`${styles.person} `} />
+            <input type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className={`${styles.input}  w-75 `} />
           </div>
 
-          <div className={styles.container}>
-            <img src={Mail} className={styles.mail} alt="Mail Icon" />
-            <input type="text" name="email" placeholder="Update Email" value={email} onClick={handleReadOnlyClick} readOnly className={styles.input} />
+          <div className={`${styles.containers}`}>
+            <img src={Mail} className={`${styles.mail} `} alt="Mail Icon" />
+            <input type="text" name="email" placeholder="Update Email" value={email} onClick={handleReadOnlyClick} readOnly className={`${styles.input} w-75`} />
           </div>
 
-          <div className={styles.container}>
-            <img src={Lock} className={styles.lock} alt="Password Icon" />
+          <div className={`${styles.containers}`}>
+            <img src={Lock} className={`${styles.lock}`} alt="Password Icon" />
             <input
               type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Old Password"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
-              className={styles.input}
+              className={`${styles.input} w-75`}
             />
             <img
               src={showPassword ? EyeSlash : Eye}
-              className={styles.eye}
+              className={`${styles.eye} img img-fluid`}
               onClick={() => togglePasswordVisibility('password')}
             />
           </div>
 
-          <div className={styles.container}>
-            <img src={Lock} className={styles.lock} alt="Confirm Password Icon" />
+          <div className={`${styles.containers}`}>
+            <img src={Lock} className={`${styles.lock}`} alt="Confirm Password Icon" />
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               name="confirmpassword"
               placeholder="New Password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className={styles.input}
+              className={`${styles.input} w-75`}
             />
             <img
               src={showConfirmPassword ? EyeSlash : Eye}
-              className={styles.eye}
+              className={`${styles.eye} img img-fluid`}
               onClick={() => togglePasswordVisibility('confirmpassword')}
             />
           </div>
 
-          <button className={styles.update} onClick={handleUpdate} >Update</button>
+          <button className={`${styles.update}`} onClick={handleUpdate} >Update</button>
         </div>
         {showOverlay && (
           <LogoutOverlay

@@ -6,6 +6,8 @@ import Blue from '../../Assets/Blue.svg'
 import Green from '../../Assets/Green.svg'
 import Pink from '../../Assets/Pink.svg'
 import { getTaskById } from '../../API/Task'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 function ShareTask() {
     const { taskId } = useParams();
@@ -64,51 +66,51 @@ function ShareTask() {
 
 
     return (
-        <div className={styles.body} >
+        <div className={`${styles.body}`} >
 
-            <div className={styles.header} >
-                <img src={ProLogo} className={styles.prologo} />
-                <p className={styles.protext} >Pro Manage</p>
+            <div className={`${styles.header} container-fluid `} >
+                <img src={ProLogo} className={`${styles.prologo} img img-fluid`} />
+                <p className={`${styles.protext} fs-1 `} >Pro Manage</p>
             </div>
 
-            <div className={styles.container} >
+            <div className={`${styles.container} container-fluid  col-xs-8 col-sm-6 col-md-6 col-lg-6`} >
 
                 {taskData && (
                     <div>
 
-                        <div className={styles.imagecontainer} >
+                        <div className={`${styles.imagecontainer} `}>
                             {taskData.priority === 'high priority' && (
-                                <img src={getPriorityImage()} className={styles.priorityImage} alt="PriorityImage" />
+                                <img src={getPriorityImage()} className={`${styles.priorityImage}`} alt="PriorityImage" />
                             )}
 
                             {taskData.priority === 'moderate priority' && (
-                                <img src={getPriorityImage()} className={styles.priorityImage} alt="PriorityImage" />
+                                <img src={getPriorityImage()} className={`${styles.priorityImage}`} alt="PriorityImage" />
                             )}
 
                             {taskData.priority === 'low priority' && (
-                                <img src={getPriorityImage()} className={styles.priorityImage} alt="PriorityImage" />
+                                <img src={getPriorityImage()} className={`${styles.priorityImage}`} alt="PriorityImage" />
                             )}
 
 
-                            <p className={styles.prioritytext} > {taskData.priority}</p>
+                            <p className={`${styles.prioritytext} fs-6 `}> {taskData.priority}</p>
                         </div>
 
-                        <div className={styles.titlecontainer} >
-                            <p className={styles.datatitle} >{taskData.title}</p>
+                        <div className={`${styles.titlecontainer}`} >
+                            <p className={`${styles.datatitle} fs-3`} >{taskData.title}</p>
                         </div>
-                        <p className={styles.checked} >Checklist ({taskData.checklist.filter(item => item.checked).length}/{taskData.checklist.length})</p>
-                        <div className={styles.checklistInputarea} >
-                            <div className={styles.checklistInput}>
+                        <p className={`${styles.checked} fs-6`} >Checklist ({taskData.checklist.filter(item => item.checked).length}/{taskData.checklist.length})</p>
+                        <div className={`${styles.checklistInputarea}`} >
+                            <div className={`${styles.checklistInput} `}>
                                 {taskData.checklist.map((item, idx) => (
-                                    <label key={idx} className={styles.radioLabel}>
-                                        <div className={styles.wanted} >
+                                    <label key={idx} className={`${styles.radioLabel}`}>
+                                        <div className={`${styles.wanted}`} >
                                             <input
                                                 type="checkbox"
-                                                className={styles.boxes}
+                                                className={`${styles.boxes}`}
                                                 checked={item.checked}
                                                 readOnly
                                             />
-                                            <div className={styles.inputvalues}>{item.item}</div>
+                                            <div className={`${styles.inputvalues}`}>{item.item}</div>
                                         </div>
                                     </label>
                                 ))}
@@ -117,9 +119,9 @@ function ShareTask() {
                         </div>
 
                         {taskData.date && (
-                            <div className={styles.datearea}>
-                                <p className={styles.due}> Due Date</p>
-                                <button className={styles.actiondate}>{formatDate(taskData.date)}</button>
+                            <div className={`${styles.datearea}`}>
+                                <p className={`${styles.due}`}> Due Date</p>
+                                <button className={`${styles.actiondate}`}>{formatDate(taskData.date)}</button>
                             </div>
                         )}
                     </div>

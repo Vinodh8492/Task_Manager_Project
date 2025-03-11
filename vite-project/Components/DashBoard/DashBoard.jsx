@@ -26,6 +26,8 @@ import { createTask, editTask, getAllTask, deleteTask, getTaskById } from '../..
 import { getAllUserDetails, getAllEmailDetails, postAllEmailDetails, getUserDetails } from '../../API/User'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 const OverlayComponent = ({
   taskData,
@@ -133,14 +135,14 @@ const OverlayComponent = ({
         />
 
         <div>
-          <div className={styles.p3}>
+          <div className={`${styles.p3}`}>
             Select Priority <span className={styles.redAsterisk}>*</span>
             <button
               className={`${styles.buttons} ${selectedPriority === 'High' ? styles.selected : ''}`}
               onClick={handleHighPriorityClick}
             >
               <img className={styles.colors} src={Pink} alt="High Priority" />
-              <p className={styles.colorstext}>HIGH PRIORITY</p>
+              <p className={`${styles.colorstext} fs-6 `}>HIGH PRIORITY</p>
             </button>
 
             <button
@@ -148,7 +150,7 @@ const OverlayComponent = ({
               onClick={handleModeratePriorityClick}
             >
               <img className={styles.colors} src={Blue} alt="Moderate Priority" />
-              <p className={styles.colorstext}>MODERATE PRIORITY</p>
+              <p className={`${styles.colorstext} fs-6`}>MODERATE PRIORITY</p>
             </button>
 
             <button
@@ -156,7 +158,7 @@ const OverlayComponent = ({
               onClick={handleLowPriorityClick}
             >
               <img className={styles.colors} src={Green} alt="Low Priority" />
-              <p className={styles.colorstext}>LOW PRIORITY</p>
+              <p className={`${styles.colorstext} fs-6`}>LOW PRIORITY</p>
             </button>
           </div>
         </div>
@@ -175,7 +177,7 @@ const OverlayComponent = ({
 
         <div className={styles.p4}>
           <div className={styles.checked}>
-            Checklist ({inputSections.filter(section => section.value.checked).length}/{inputSections.length})
+            Checklist ({inputSections?.filter(section => section.value.checked).length}/{inputSections.length})
             <span className={styles.redAsterisk}>*</span>
           </div>
           <div className={styles.inputSectionContainer}>
@@ -315,11 +317,11 @@ const AddPeopleOverlay = ({ onClose }) => {
 
 function LogoutOverlay({ onClose, onConfirm }) {
   return (
-    <div className={styles.logoutoverlay}>
-      <div className={styles.logoutoverlayContent}>
-        <p className={styles.confirmlogoutpara} >Are you sure you want to log out?</p>
-        <button className={styles.confirmlogoutButton} onClick={onConfirm}>Yes, Logout</button>
-        <button className={styles.confirmcloseButton} onClick={onClose}>Cancel</button>
+    <div className={`${styles.logoutoverlay}`}>
+      <div className={`${styles.logoutoverlayContent} w-50 d-flex flex-column text-center align-items-center justify-content-center`}>
+        <p className={`${styles.confirmlogoutpara} text-center`} >Are you sure you want to log out?</p>
+        <button className={`${styles.confirmlogoutButton} text-nowrap`} onClick={onConfirm}>Yes, Logout</button>
+        <button className={`${styles.confirmcloseButton}`} onClick={onClose}>Cancel</button>
       </div>
     </div>
   );
@@ -439,8 +441,8 @@ function DashBoard() {
 
   const fetchAllTasks = async () => {
     const response = await getAllTask();
-    setOriginalTaskData(response.data);
-    setTaskData(response.data);
+    setOriginalTaskData(response?.data);
+    setTaskData(response?.data);
   };
 
 
@@ -816,7 +818,7 @@ function DashBoard() {
         setSelectedPriority('');
         break;
     }
-    setInputSections(taskData.data.checklist.map((item, index) => ({
+    setInputSections(taskData?.data.checklist?.map((item, index) => ({
       id: index,
       value: item,
     })));
@@ -927,52 +929,52 @@ function DashBoard() {
 
 
   return (
-    <div className={styles.body}>
+    <div className={`${styles.body} container-fluid`}>
       <ToastContainer />
-      <div className={styles.left}>
-        <div className={styles.flex}>
-          <img src={ProLogo} className={styles.prologo} alt="ProLogo" />
-          <p className={styles.pro}>Pro Manage</p>
+      <div className={`${styles.left} col-lg-2.5 col-md-2 col-sm-3 col-xs-3 `}>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `}>
+          <img src={ProLogo} className={`${styles.prologo} `} />
+          <p className={`${styles.pro} fs-3 text-center`}>Pro Manage</p>
           <div>
           </div>
         </div>
 
-        <div className={styles.flexboard}>
-          <img src={Board} className={styles.board} alt="Board" />
-          <p className={styles.boardtext}>Board</p>
+        <div className={`${styles.flexboard} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `}>
+          <img src={Board} className={`${styles.board}`} alt="Board" />
+          <p className={`${styles.boardtext} fs-6`}>Board</p>
         </div>
 
-        <div className={styles.flex} onClick={() => { navigate('/analytics'); }}>
-          <img src={Analytics} className={styles.analytics} alt="Analytics" />
-          <p className={styles.analyticstext}>Analytics</p>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `} onClick={() => { navigate('/analytics'); }}>
+          <img src={Analytics} className={`${styles.analytics} `}alt="Analytics" />
+          <p className={`${styles.analyticstext}`}>Analytics</p>
         </div>
 
-        <div className={styles.flex} onClick={() => { navigate('/settings'); }}>
-          <img src={Settings} className={styles.settings} alt="Settings" />
-          <p className={styles.settingstext}>Settings</p>
+        <div className={`${styles.flex} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row `} onClick={() => { navigate('/settings'); }}>
+          <img src={Settings} className={`${styles.settings}`} alt="Settings" />
+          <p className={`${styles.settingstext}`}>Settings</p>
         </div>
 
-        <div className={styles.flexy} onClick={() => setShowOverlay(true)} >
-          <img src={Logout} className={styles.logout} alt="Logout" />
-          <p className={styles.log}>Log out </p>
+        <div className={`${styles.flexy}`} onClick={() => setShowOverlay(true)} >
+          <img src={Logout} className={`${styles.logout} `}alt="Logout" />
+          <p className={`${styles.log}`}>Log out </p>
         </div>
       </div>
-      <hr className={styles.separator} />
+      <div className={`${styles.separator} bg-info `}></div>
 
-      <div className={styles.right}>
-        <div className={styles.header}>
-          <p className={styles.welcome}>Welcome! {userName}</p>
-          <p className={styles.date}>{currentDate}</p>
+      <div className={`${styles.right}`}>
+        <div className={`${styles.header} d-flex flex-column flex-xs-column flex-sm-column flex-md-row flex-lg-row justify-content-between `}>
+          <p className={`${styles.welcome} fs-4`}>Welcome! {userName}</p>
+          <p className={`${styles.date} fs-4`}>{currentDate}</p>
         </div>
 
-        <div className={styles.header}>
-          <p className={styles.board1}>Board</p>
-          <div className={styles.peoplesection} onClick={toggleAddOverlay} >
-            <img src={People} className={styles.people} />
-            <p className={styles.addpeople} >Add People</p>
+        <div className={`${styles.header1} d-flex flex-row flex-xs-column flex-sm-column flex-md-row flex-lg-row align-items-center justify-content-between`}>
+          <div className={`${styles.peoplesection} d-flex flex-column`} onClick={toggleAddOverlay} >
+            <img src={People} className={`${styles.people} img img-fluid`} />
+            <p className={`${styles.addpeople} `} >Add People to Board</p>
           </div>
+         
           <select
-            className={styles.week}
+            className={`${styles.week} text-start `}
             value={selectedTimeframe}
             onChange={(e) => {
               setSelectedTimeframe(e.target.value);
@@ -986,13 +988,13 @@ function DashBoard() {
           </select>
         </div>
 
-        <div className={styles.taskSections}>
-          <div className={styles.taskarea}>
-            <div className={styles.section1}>
+        <div className={`${styles.taskSections}`}>
+          <div className={`${styles.taskarea}`}>
+            <div className={`${styles.section1}`}>
 
-              <div className={styles.backlogSection}>
-                <p className={styles.backlog}>Backlog</p>
-                <img src={Collapse} className={styles.collpaseicon} onClick={() => collapseAllChecklists("backlog")} alt="Collapse" />
+              <div className={`${styles.backlogSection}`}>
+                <p className={`${styles.backlog}`}>Expired Jobs</p>
+                <img src={Collapse} className={`${styles.collpaseicon}`} onClick={() => collapseAllChecklists("backlog")} alt="Collapse" />
               </div>
 
               {Array.isArray(taskData) && taskData.length > 0 && (
@@ -1000,57 +1002,59 @@ function DashBoard() {
                   const userEmail = email;
                   if (task.status === 'backlog' && (task.userEmail === userEmail || task.Assign_to === userEmail)) {
                     return (
-                      <div key={task._id} className={styles.tasksContainer}>
-                        <div className={styles.row1}>
-                          <img src={getPriorityImage(task.priority)} className={styles.priorityImage} />
-                          <p className={styles.prioritytext}>{task.priority}</p>
+                      <div key={task._id} className={`${styles.tasksContainer} `}>
+                        <div className={`${styles.row1} `}>
+                          <img src={getPriorityImage(task.priority)} className={`${styles.priorityImage}`} />
+                          <p className={`${styles.prioritytext}`}>{task.priority}</p>
 
-                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
-                        </div>
-                        {task.Assign_to && task.Assign_to !== 'undefined' && (
-                          <div className={styles.assigned} >
-                            <p className={styles.assignToText}>
+                          {task.Assign_to && task.Assign_to !== 'undefined' && (
+                          <div className={`${styles.assigned}`} >
+                            <p className={`${styles.assignToText}`}>
                               {task.Assign_to.slice(0, 2).toUpperCase()}
                             </p>
-                            <img src={Ellipse} className={styles.ellipse} />
+                            <img src={Ellipse} className={`${styles.ellipse} `}/>
                           </div>
                         )}
 
-                        <div className={styles.bigcontainer}  >
+                          <img src={More} className={`${styles.more}`} onClick={() => toggleMoreActions(task._id)} />
+                        </div>
+                        
+
+                        <div className={`${styles.bigcontainer}`}  >
                           {showMoreActions[task._id] && (
-                            <div className={styles.moreDetails}>
-                              <p className={styles.editpara} onClick={() => handleEditClick(task._id)}>Edit</p>
-                              <p className={styles.sharepara} onClick={() => handleShareTask(task._id)}>Share</p>
-                              <p className={styles.deletepara} onClick={() => handleDeleteClick(task._id)}>Delete</p>
+                            <div className={`${styles.moreDetails}`}>
+                              <p className={`${styles.editpara}`} onClick={() => handleEditClick(task._id)}>Edit</p>
+                              <p className={`${styles.sharepara}`} onClick={() => handleShareTask(task._id)}>Share</p>
+                              <p className={`${styles.deletepara}`} onClick={() => handleDeleteClick(task._id)}>Delete</p>
                             </div>
                           )}
                         </div>
-                        <div className={styles.datatitle}> <TruncatedTitle title={task.title} /></div>
-                        <div className={styles.row2}>
-                          <p className={styles.checklisttext}>Checklist
-                            <span className={styles.checknumbers} >({task.checklist.filter(item => item.checked).length}/{task.checklist.length})</span></p>
-                          <div className={styles.arrowdiv}>
-                            <img src={Down_Arrow} className={styles.arrow} onClick={() => toggleChecklist(task._id)} />
+                        <div className={`${styles.datatitle} `}> <TruncatedTitle title={task.title} /></div>
+                        <div className={`${styles.row2}`}>
+                          <p className={`${styles.checklisttext}`}>Checklist
+                            <span className={`${styles.checknumbers}`} >({task.checklist.filter(item => item.checked).length}/{task.checklist.length})</span></p>
+                          <div className={`${styles.arrowdiv}`}>
+                            <img src={Down_Arrow} className={`${styles.arrow}`} onClick={() => toggleChecklist(task._id)} />
                           </div>
-                          <div className={styles.checklistInputarea}>
+                          <div className={`${styles.checklistInputarea}`}>
                             {showChecklists[task._id] && (
-                              <div className={styles.checklistInput}>
+                              <div className={`${styles.checklistInput}`}>
                                 {task.checklist.map((item, idx) => (
-                                  <label key={idx} className={styles.radioLabel} onClick={() => handleLabelClick(task._id, idx)}>
+                                  <label key={idx} className={`${styles.radioLabel}`} onClick={() => handleLabelClick(task._id, idx)}>
                                     <input
                                       type="checkbox"
-                                      className={styles.boxes}
+                                      className={`${styles.boxes}`}
                                       checked={item.checked}
                                       readOnly
                                     />
-                                    <div className={styles.inputvalues}>{item.item}</div>
+                                    <div className={`${styles.inputvalues}`}>{item.item}</div>
                                   </label>
                                 ))}
                               </div>
                             )}
                           </div>
                         </div>
-                        <div className={styles.actionbuttons}>
+                        <div className={`${styles.actionbuttons}`}>
                           {task.date && (
                             <button className={`${styles.actiondate} ${isDateInPast(task.date) ? styles.datePast : styles.dateFuture}`}>
                               {formatDate(task.date)}
@@ -1058,10 +1062,10 @@ function DashBoard() {
                           )}
 
                           {task.status && (
-                            <div className={styles.sectionchangebuttons1}>
-                              <button className={styles.actionprogress} onClick={() => handleClick(task._id, 'in progress')} >PROGRESS</button>
-                              <button className={styles.actiontodo} onClick={() => handleClick(task._id, 'to do')} >TO DO</button>
-                              <button className={styles.actiondone} onClick={() => handleClick(task._id, 'done')} >DONE</button>
+                            <div className={`${styles.sectionchangebuttons1}`}>
+                              <button className={`${styles.actionprogress}`} onClick={() => handleClick(task._id, 'in progress')} >PROGRESS</button>
+                              <button className={`${styles.actiontodo}`} onClick={() => handleClick(task._id, 'to do')} >TO DO</button>
+                              <button className={`${styles.actiondone}`} onClick={() => handleClick(task._id, 'done')} >DONE</button>
                             </div>
                           )}
                         </div>
@@ -1075,9 +1079,9 @@ function DashBoard() {
             </div>
 
 
-            <div className={styles.section1}>
+            <div className={`${styles.section1} `}>
               <div className={styles.backlogSection}>
-                <p className={styles.backlog}>To Do</p>
+                <p className={styles.backlog}>New Jobs</p>
                 <img src={Add} className={styles.add} onClick={handleAddClick} alt="Add" />
                 <img src={Collapse} className={styles.collpaseicon} onClick={() => collapseAllChecklists("to do")} alt="Collapse" />
               </div>
@@ -1087,20 +1091,23 @@ function DashBoard() {
                   const userEmail = email;
                   if (task.status === 'to do' && (task.userEmail === userEmail || task.Assign_to === userEmail)) {
                     return (
-                      <div key={task._id} className={styles.tasksContainer}>
-                        <div className={styles.row1}>
-                          <img src={getPriorityImage(task.priority)} className={styles.priorityImage} />
-                          <p className={styles.prioritytext}>{task.priority}</p>
-                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
-                        </div>
-                        {task.Assign_to && task.Assign_to !== 'undefined' && (
-                          <div className={styles.assigned} >
-                            <p className={styles.assignToText}>
+                      <div key={task._id} className={`${styles.tasksContainer}`}>
+                        <div className={`${styles.row1}`}>
+                          <img src={getPriorityImage(task.priority)} className={`${styles.priorityImage}`} />
+                          <p className={`${styles.prioritytext}`}>{task.priority}</p>
+
+                          {task.Assign_to && task.Assign_to !== 'undefined' && (
+                          <div className={`${styles.assigned}`} >
+                            <p className={`${styles.assignToText}`}>
                               {task.Assign_to.slice(0, 2).toUpperCase()}
                             </p>
-                            <img src={Ellipse} className={styles.ellipse} />
+                            <img src={Ellipse} className={`${styles.ellipse}`} />
                           </div>
                         )}
+
+                          <img src={More} className={`${styles.more}`} onClick={() => toggleMoreActions(task._id)} />
+                        </div>
+                        
                         <div className={styles.bigcontainer}>
                           {showMoreActions[task._id] && (
                             <div className={styles.moreDetails}>
@@ -1160,9 +1167,9 @@ function DashBoard() {
 
 
 
-            <div className={styles.section1}>
-              <div className={styles.backlogSection}>
-                <p className={styles.backlog}>In Progress</p>
+            <div className={`${styles.section1} `}>
+              <div className={`${styles.backlogSection}`}>
+                <p className={styles.backlog}>Active Jobs</p>
                 <img src={Collapse} className={styles.collpaseicon} onClick={() => collapseAllChecklists("in progress")} alt="Collapse" />
               </div>
 
@@ -1171,13 +1178,12 @@ function DashBoard() {
                   const userEmail = email;
                   if (task.status === 'in progress' && (task.userEmail === userEmail || task.Assign_to === userEmail)) {
                     return (
-                      <div key={task._id} className={styles.tasksContainer}>
+                      <div key={task._id} className={`${styles.tasksContainer}`}>
                         <div className={styles.row1}>
                           <img src={getPriorityImage(task.priority)} className={styles.priorityImage} />
                           <p className={styles.prioritytext}>{task.priority}</p>
-                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
-                        </div>
-                        {task.Assign_to && task.Assign_to !== 'undefined' && (
+
+                          {task.Assign_to && task.Assign_to !== 'undefined' && (
                           <div className={styles.assigned} >
                             <p className={styles.assignToText}>
                               {task.Assign_to.slice(0, 2).toUpperCase()}
@@ -1185,6 +1191,10 @@ function DashBoard() {
                             <img src={Ellipse} className={styles.ellipse} />
                           </div>
                         )}
+
+                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
+                        </div>
+                        
                         <div className={styles.bigcontainer}>
                           {showMoreActions[task._id] && (
                             <div className={styles.moreDetails}>
@@ -1245,9 +1255,9 @@ function DashBoard() {
 
 
 
-            <div className={styles.section1}>
+            <div className={`${styles.section1} `}>
               <div className={styles.backlogSection}>
-                <p className={styles.backlog}>Done</p>
+                <p className={styles.backlog}>Completed Jobs</p>
                 <img src={Collapse} className={styles.collpaseicon} onClick={() => collapseAllChecklists("done")} alt="Collapse" />
               </div>
 
@@ -1260,9 +1270,8 @@ function DashBoard() {
                         <div className={styles.row1}>
                           <img src={getPriorityImage(task.priority)} className={styles.priorityImage} />
                           <p className={styles.prioritytext}>{task.priority}</p>
-                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
-                        </div>
-                        {task.Assign_to && task.Assign_to !== 'undefined' && (
+
+                          {task.Assign_to && task.Assign_to !== 'undefined' && (
                           <div className={styles.assigned} >
                             <p className={styles.assignToText}>
                               {task.Assign_to.slice(0, 2).toUpperCase()}
@@ -1270,6 +1279,10 @@ function DashBoard() {
                             <img src={Ellipse} className={styles.ellipse} />
                           </div>
                         )}
+
+                          <img src={More} className={styles.more} onClick={() => toggleMoreActions(task._id)} />
+                        </div>
+                        
                         <div className={styles.bigcontainer}>
                           {showMoreActions[task._id] && (
                             <div className={styles.moreDetails}>

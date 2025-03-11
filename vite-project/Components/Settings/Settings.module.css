@@ -28,9 +28,14 @@
     cursor: pointer;
 }
 
+
+
 .separator {
     border-color: #fbfbfb;
-    width: 1px;
+    width: 1vw;
+    overflow-y: auto;
+    height: auto;
+   
 }
 
 .prologo,
@@ -82,6 +87,7 @@
     bottom: 8vh;
     padding-left: 2.5vw;
     cursor: pointer;
+    position: absolute;
 }
 
 .right {
@@ -111,20 +117,20 @@
     margin-top: 5vh;
 }
 
-.container {
+.containers {
     display: flex;
     flex-direction: row;
 }
 
 .person {
-    margin-right: -3vw;
+    margin-right: 2vw;
     z-index: 999;
 }
 
 .input {
     width: 30vw;
     height: 7vh;
-    padding-left: 3.5vw;
+    padding-left: 2.5vw;
     padding-top: 0.5vh;
     font-size: 20px;
     font-weight: 400;
@@ -138,12 +144,12 @@
 }
 
 .mail {
-    margin-right: -3vw;
+    margin-right: 2vw;
     z-index: 999;
 }
 
 .lock {
-    margin-right: -3vw;
+    margin-right: 2vw;
     z-index: 999;
 }
 
@@ -209,7 +215,6 @@
     width: 20vw;
     border-radius: 10px;
     border: none;
-    margin-top: 2.5vh;
     cursor: pointer;
 }
 

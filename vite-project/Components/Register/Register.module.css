@@ -57,7 +57,7 @@
     color: #343434;
 }
 
-.container {
+.content {
     display: flex;
     flex-direction: row;
 }
@@ -78,7 +78,7 @@
 }
 
 .eye {
-    margin-left: -3.3vw;
+    margin-left: -6vw;
     z-index: 999;
     width: 3vw;
     height: 4vh;

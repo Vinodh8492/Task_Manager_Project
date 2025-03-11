@@ -8,12 +8,12 @@
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vh;
+    height: auto;
 }
 
 .left {
     min-width: 18vw;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 5vh;
@@ -22,12 +22,14 @@
 
 .separator {
     border-color: #fbfbfb;
-    width: 1px;
+    width: 1vw;
+    overflow-y: auto;
+    height: auto;
+   
 }
 
 .flex {
     display: flex;
-    flex-direction: row;
     align-items: center;
     padding-left: 2vw;
     cursor: pointer;
@@ -43,7 +45,7 @@
 }
 
 .flexboard {
-    height: 5vh;
+    height: 7vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -67,7 +69,6 @@
 
 .pro {
     font-weight: 550;
-    font-size: 3vh;
 }
 
 .log {
@@ -78,7 +79,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: fixed;
+    position: absolute;
     bottom: 8vh;
     padding-left: 2.5vw;
     cursor: pointer;
@@ -86,6 +87,8 @@
 
 .right {
     width: 100%;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .header {
@@ -107,15 +110,17 @@
     display: flex;
     flex-direction: row;
     gap: 1.5vw;
+    width: 100%;
+    
 }
+
 
 .half {
     display: flex;
     flex-direction: column;
-    background-color: #e4f2ff;
     width: 30vw;
-    height: 33vh;
-    margin-top: 5vh;
+    height: auto;
+    margin-top: 1.5vh;
     gap: 3vh;
     margin-left: 3vw;
     border: none;
@@ -141,49 +146,49 @@
 .number1 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 12vw;
+   
 }
 
 .number2 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 13.2vw;
+   
 }
 
 .number3 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 10.4vw;
+   
 }
 
 .number4 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 10.7vw;
+   
 }
 
 .digit1 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 12vw;
+   
 }
 
 .digit2 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 9.6vw;
+   
 }
 
 .digit3 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 11.95vw;
+   
 }
 
 .digit4 {
     font-size: 20px;
     font-weight: 600;
-    margin-left: 10.75vw;
+   
 }
 
 .overlay {
@@ -227,7 +232,6 @@
     width: 20vw;
     border-radius: 10px;
     border: none;
-    margin-top: 2.5vh;
     cursor: pointer;
 }
 

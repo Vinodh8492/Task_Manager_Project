@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 function Login() {
   const [formData, setFormData] = useState({ password: '', email: '' });
@@ -61,35 +63,36 @@ function Login() {
 
 
   return (
-    <div className={styles.body}>
+    <div className={`{styles.body} d-flex `}>
       <ToastContainer />
-      <div className={styles.left}>
-        <img src={Logo} className={styles.logo} alt="Logo" />
-        <p className={styles.p1}>Welcome aboard my friend</p>
-        <p className={styles.p2}>just a couple of clicks and we start</p>
+      <div className={ `${styles.left}  d-flex flex-column justify-content-center align-items-center `}>
+        <img src={Logo} className={`${styles.logo} img-fluid `} alt="Logo" />
+        <p className={`${styles.p1} ms-xs-3 ms-sm-3 fs-2 fw-bold  text-wrap text-center `}>Welcome aboard my friend</p>
+        <p className={`${styles.p2} ms-xs-3 ms-sm-3 fs-3 fw-bold text-wrap text-center`}>just a couple of clicks and we start</p>
       </div>
 
-      <div className={styles.right}>
+      <div className={`${styles.right} `}>
         <p className={styles.text}>Login</p>
 
-        <div className={styles.container}>
-          <img src={Mail} className={styles.mail} alt="Mail Icon" />
-          <input type="text" name="email" placeholder="Email" onChange={handleChange} value={formData.email} className={styles.input} />
+        <div className={`${styles.content} form-inline d-flex gap-3 me-lg-5 me-md-5 me-sm-3 me-xs-3 col-lg-6 col-md-4 col-sm-6 col-xs-5`}>
+          <img src={Mail} className={`${styles.mail}  `} alt="Mail Icon" />
+          <input type="text" name="email" placeholder="Email" onChange={handleChange} value={formData.email} 
+          className={`${styles.input} form-control ms-lg-5  col-lg-6 col-md-4 col-sm-6 col-xs-5 `} />
         </div>
 
-        <div className={styles.container}>
-          <img src={Lock} className={styles.lock} alt="Password Icon" />
+        <div className={`${styles.content} d-flex gap-3 me-lg-5 me-md-5 me-sm-3 me-xs-3 col-lg-6 col-md-4 col-sm-6 col-xs-5`}>
+          <img src={Lock} className={`${styles.lock}`} alt="Password Icon" />
           <input
             type={showPassword ? 'text' : 'password'}
             name="password"
             placeholder="Password"
             onChange={handleChange}
             value={formData.password}
-            className={styles.input}
+            className={`${styles.input} form-control ms-lg-5   col-lg-6 col-md-4 col-sm-6 col-xs-5`}
           />
           <img
             src={showPassword ? EyeSlash : Eye}
-            className={styles.eye}
+            className={`${styles.eye}  `}
             alt="Toggle Password Visibility"
             onClick={togglePasswordVisibility}
           />
